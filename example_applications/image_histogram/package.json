@@ -1,0 +1,28 @@
+{
+	"name": "image_histogram",
+	"version": "1.0.0",
+	"description": "Image histogram example for pict-section-histogram - drag and drop image analysis",
+	"main": "Image-Histogram-Application.js",
+	"scripts":
+	{
+		"start": "node Image-Histogram-Application.js",
+		"build": "npx quack build && npx quack copy"
+	},
+	"author": "steven velozo <steven@velozo.com>",
+	"license": "MIT",
+	"copyFilesSettings":
+	{
+		"whenFileExists": "overwrite"
+	},
+	"copyFiles":
+	[
+		{ "from": "./html/*", "to": "./dist/" },
+		{ "from": "../../node_modules/pict/dist/*", "to": "./dist/" }
+	],
+	"dependencies":
+	{
+		"pict": "^1.0.293",
+		"pict-application": "^1.0.19",
+		"pict-view": "^1.0.63"
+	}
+}

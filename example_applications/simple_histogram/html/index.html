@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Simple Histogram — pict-section-histogram Example</title>
+		<style id="PICT-CSS"></style>
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				margin: 20px;
+				background: #f5f5f5;
+				color: #333;
+				max-width: 960px;
+			}
+			h1 { font-size: 24px; margin-bottom: 4px; }
+			h1 small { font-size: 14px; color: #888; font-weight: normal; }
+			h2 { font-size: 18px; margin-top: 32px; margin-bottom: 8px; color: #555; }
+			p.desc { font-size: 13px; color: #777; margin-top: 0; margin-bottom: 12px; }
+			.demo-section {
+				background: #fff;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				padding: 20px;
+				margin-bottom: 20px;
+			}
+			.controls {
+				margin-bottom: 12px;
+				display: flex;
+				gap: 8px;
+				flex-wrap: wrap;
+			}
+			button {
+				padding: 6px 14px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				background: #fff;
+				cursor: pointer;
+				font-size: 13px;
+			}
+			button:hover { background: #eee; }
+			button.active { background: #4A90D9; color: #fff; border-color: #4A90D9; }
+			.output {
+				margin-top: 8px;
+				padding: 8px 12px;
+				background: #f0f7ff;
+				border-radius: 4px;
+				font-size: 13px;
+				font-family: monospace;
+				white-space: pre-wrap;
+			}
+			code {
+				background: #f0f0f0;
+				padding: 2px 6px;
+				border-radius: 3px;
+				font-size: 12px;
+			}
+			pre.code-sample {
+				background: #1e1e2e;
+				color: #cdd6f4;
+				padding: 14px 16px;
+				border-radius: 6px;
+				font-size: 12px;
+				overflow-x: auto;
+				line-height: 1.5;
+				margin: 8px 0 16px 0;
+			}
+			pre.code-sample .kw { color: #cba6f7; }
+			pre.code-sample .str { color: #a6e3a1; }
+			pre.code-sample .num { color: #fab387; }
+			pre.code-sample .cmt { color: #6c7086; }
+			pre.code-sample .prop { color: #89b4fa; }
+			hr { border: none; border-top: 1px solid #e0e0e0; margin: 32px 0; }
+		</style>
+		<script src="./pict.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			Pict.safeOnDocumentReady(
+				() =>
+				{
+					Pict.safeLoadPictApplication(SimpleHistogram, 1);
+				});
+		</script>
+	</head>
+	<body>
+		<h1>pict-section-histogram <small>Developer Examples</small></h1>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 1: Vertical with Range Selection                         -->
+		<!-- ============================================================ -->
+		<h2>1. Vertical Histogram with Range Selection</h2>
+		<p class="desc">
+			Drag the slider handles or click bars to select a contiguous range.
+			Uses <code>DataAddress</code> for live data binding and <code>SelectionDataAddress</code>
+			to write the selection state back to AppData.
+		</p>
+		<div class="demo-section">
+			<div class="controls">
+				<button id="btn-vertical" class="active" onclick="window.histogramApp.setOrientation('vertical')">Vertical</button>
+				<button id="btn-horizontal" onclick="window.histogramApp.setOrientation('horizontal')">Horizontal</button>
+				<button onclick="window.histogramApp.randomizeData()">Randomize Data</button>
+			</div>
+			<div id="Histogram-Container-Div"></div>
+			<div id="selection-output" class="output">Selection: (drag the slider handles or click bars)</div>
+		</div>
+
+		<pre class="code-sample"><span class="kw">var</span> histView = _Pict.addView(<span class="str">'MainHistogram'</span>, {
+    <span class="prop">DataAddress</span>: <span class="str">'AppData.HistogramBins'</span>,
+    <span class="prop">Selectable</span>: <span class="num">true</span>,
+    <span class="prop">SelectionMode</span>: <span class="str">'range'</span>,
+    <span class="prop">InitialSelection</span>: { <span class="prop">Start</span>: <span class="num">2</span>, <span class="prop">End</span>: <span class="num">7</span> }
+}, PictSectionHistogram);
+histView.<span class="prop">onSelectionChange</span> = <span class="kw">function</span>(pSelection) { <span class="cmt">/* react */</span> };</pre>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 2: Horizontal with Single Select                         -->
+		<!-- ============================================================ -->
+		<h2>2. Horizontal Histogram &mdash; Single Select</h2>
+		<p class="desc">
+			Click a bar to select it. Only one bar is active at a time.
+			Bins are provided directly via the <code>Bins</code> option (no DataAddress needed).
+		</p>
+		<div class="demo-section">
+			<div id="Histogram2-Container-Div"></div>
+			<div id="single-select-output" class="output">Click a bar to select it.</div>
+		</div>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 3: Vertical with Multi Select                            -->
+		<!-- ============================================================ -->
+		<h2>3. Vertical Histogram &mdash; Multi Select</h2>
+		<p class="desc">
+			Click bars to toggle their selection. Multiple bars can be selected at once.
+		</p>
+		<div class="demo-section">
+			<div id="Histogram3-Container-Div"></div>
+			<div id="multi-select-output" class="output">Click bars to toggle selection.</div>
+		</div>
+
+		<hr>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 4: Sparse Numeric Series (Gap Filling)                   -->
+		<!-- ============================================================ -->
+		<h2>4. Sparse Numeric Series &mdash; Filling Gaps</h2>
+		<p class="desc">
+			Real-world data often has gaps. Here we demonstrate constructing bins that
+			fill in missing years so the histogram shows continuous coverage.
+			Use the buttons to toggle gap visibility.
+		</p>
+		<div class="demo-section">
+			<div class="controls">
+				<button id="btn-with-gaps" onclick="window.histogramApp.showSparseData(true)">With Gaps Filled</button>
+				<button id="btn-without-gaps" class="active" onclick="window.histogramApp.showSparseData(false)">Raw Data Only</button>
+			</div>
+			<div id="Histogram4-Container-Div"></div>
+		</div>
+
+		<pre class="code-sample"><span class="cmt">// Fill gaps in sparse year data before passing to histogram</span>
+<span class="kw">function</span> fillYearGaps(pSparseData) {
+    <span class="kw">var</span> lookup = {};
+    <span class="kw">var</span> minYear = Infinity, maxYear = -Infinity;
+    pSparseData.forEach(<span class="kw">function</span>(b) {
+        lookup[b.Label] = b.Value;
+        minYear = Math.min(minYear, +b.Label);
+        maxYear = Math.max(maxYear, +b.Label);
+    });
+    <span class="kw">var</span> filled = [];
+    <span class="kw">for</span> (<span class="kw">var</span> y = minYear; y &lt;= maxYear; y++) {
+        filled.push({ <span class="prop">Label</span>: String(y), <span class="prop">Value</span>: lookup[y] || <span class="num">0</span> });
+    }
+    <span class="kw">return</span> filled;
+}</pre>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 5: Dynamic Colors via Value Ranges                       -->
+		<!-- ============================================================ -->
+		<h2>5. Dynamic Bar Colors Based on Value Ranges</h2>
+		<p class="desc">
+			Override <code>BarColor</code> per-render by dynamically assigning colors
+			based on each bin's value. Uses <code>onSelectionChange</code> to recolor
+			after each interaction. The technique: set each bin's color into a custom
+			property and extend the renderer.
+		</p>
+		<div class="demo-section">
+			<div id="Histogram5-Container-Div"></div>
+			<p style="font-size:12px;color:#888;margin:8px 0 0 0;">
+				<span style="display:inline-block;width:12px;height:12px;background:#E74C3C;border-radius:2px;vertical-align:middle;"></span> &lt; 30 &nbsp;
+				<span style="display:inline-block;width:12px;height:12px;background:#F39C12;border-radius:2px;vertical-align:middle;"></span> 30&ndash;59 &nbsp;
+				<span style="display:inline-block;width:12px;height:12px;background:#27AE60;border-radius:2px;vertical-align:middle;"></span> 60&ndash;89 &nbsp;
+				<span style="display:inline-block;width:12px;height:12px;background:#2980B9;border-radius:2px;vertical-align:middle;"></span> &ge; 90
+			</p>
+		</div>
+
+		<pre class="code-sample"><span class="cmt">// Assign a BarColor property to each bin based on its value</span>
+<span class="kw">function</span> applyHeatColors(pBins) {
+    pBins.forEach(<span class="kw">function</span>(b) {
+        <span class="kw">if</span> (b.Value &lt; <span class="num">30</span>)       b.BarColor = <span class="str">'#E74C3C'</span>;
+        <span class="kw">else if</span> (b.Value &lt; <span class="num">60</span>)  b.BarColor = <span class="str">'#F39C12'</span>;
+        <span class="kw">else if</span> (b.Value &lt; <span class="num">90</span>)  b.BarColor = <span class="str">'#27AE60'</span>;
+        <span class="kw">else</span>                     b.BarColor = <span class="str">'#2980B9'</span>;
+    });
+}</pre>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 6: Horizontal with Large Dataset                         -->
+		<!-- ============================================================ -->
+		<h2>6. Horizontal &mdash; Large Dataset with Compact Bars</h2>
+		<p class="desc">
+			Histograms can handle many bins. This example shows 20 categories
+			with thin bars and small gap for a compact layout.
+		</p>
+		<div class="demo-section">
+			<div id="Histogram6-Container-Div"></div>
+		</div>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 7: Read-Only (No Selection)                              -->
+		<!-- ============================================================ -->
+		<h2>7. Read-Only &mdash; No Selection</h2>
+		<p class="desc">
+			Set <code>Selectable: false</code> (the default) for a non-interactive display.
+			Bars do not highlight on hover or click.
+		</p>
+		<div class="demo-section">
+			<div id="Histogram7-Container-Div"></div>
+		</div>
+
+		<!-- ============================================================ -->
+		<!-- DEMO 8: Programmatic API                                      -->
+		<!-- ============================================================ -->
+		<h2>8. Programmatic API</h2>
+		<p class="desc">
+			Use methods like <code>setBins()</code>, <code>setSelection()</code>,
+			<code>setOrientation()</code>, and <code>getSelection()</code> to control
+			the histogram from code.
+		</p>
+		<div class="demo-section">
+			<div class="controls">
+				<button onclick="window.histogramApp.apiSetBins()">setBins(newData)</button>
+				<button onclick="window.histogramApp.apiSetSelection()">setSelection({Start:1, End:3})</button>
+				<button onclick="window.histogramApp.apiGetSelection()">getSelection()</button>
+				<button onclick="window.histogramApp.apiToggleOrientation()">Toggle Orientation</button>
+			</div>
+			<div id="Histogram8-Container-Div"></div>
+			<div id="api-output" class="output">Use the buttons above to call API methods.</div>
+		</div>
+
+		<pre class="code-sample"><span class="cmt">// Programmatic control</span>
+histView.setBins([{ <span class="prop">Label</span>: <span class="str">'A'</span>, <span class="prop">Value</span>: <span class="num">10</span> }, ...]);
+histView.setSelection({ <span class="prop">Start</span>: <span class="num">1</span>, <span class="prop">End</span>: <span class="num">3</span> });
+histView.setOrientation(<span class="str">'horizontal'</span>);
+<span class="kw">var</span> sel = histView.getSelection();
+<span class="cmt">// sel = { Mode:'range', RangeStart:1, RangeEnd:3, SelectedIndices:[1,2,3], ... }</span></pre>
+
+		<!-- Scripts -->
+		<script src="./simple_histogram.min.js" type="text/javascript"></script>
+	</body>
+</html>
