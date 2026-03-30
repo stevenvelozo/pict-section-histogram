@@ -22,8 +22,8 @@
     "homepage": "https://github.com/stevenvelozo/pict-section-histogram#readme",
     "devDependencies": {
         "browser-env": "^3.3.0",
-        "pict": "^1.0.350",
-        "quackage": "^1.0.59"
+        "pict": "^1.0.361",
+        "quackage": "^1.0.65"
     },
     "mocha": {
         "diff": true,
