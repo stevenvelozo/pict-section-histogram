@@ -33,19 +33,40 @@ function buildBarGroupHTML(pBin, pIndex, pBarSize, pOptions, pIsSelected, pInRan
 	let tmpSelectedClass = pIsSelected ? ' pict-histogram-selected' : '';
 	let tmpInRangeClass = pInRange ? ' pict-histogram-in-range' : '';
 
+	let tmpFillMode = pOptions.FillContainer;
+
 	let tmpBarStyle = '';
 	if (tmpVertical)
 	{
-		tmpBarStyle = `height:${pBarSize}px;width:${pOptions.BarThickness}px;background-color:${tmpBarColor};`;
+		if (tmpFillMode)
+		{
+			tmpBarStyle = `height:${pBarSize}px;background-color:${tmpBarColor};`;
+		}
+		else
+		{
+			tmpBarStyle = `height:${pBarSize}px;width:${pOptions.BarThickness}px;background-color:${tmpBarColor};`;
+		}
 	}
 	else
 	{
-		tmpBarStyle = `width:${pBarSize}px;height:${pOptions.BarThickness}px;background-color:${tmpBarColor};`;
+		if (tmpFillMode)
+		{
+			tmpBarStyle = `width:${pBarSize}px;background-color:${tmpBarColor};`;
+		}
+		else
+		{
+			tmpBarStyle = `width:${pBarSize}px;height:${pOptions.BarThickness}px;background-color:${tmpBarColor};`;
+		}
 	}
 
 	let tmpGroupWidth = pOptions.BarThickness + pOptions.BarGap;
 	let tmpGroupStyle = '';
-	if (tmpVertical)
+	if (tmpFillMode)
+	{
+		// No fixed dimensions — CSS flex:1 handles sizing
+		tmpGroupStyle = '';
+	}
+	else if (tmpVertical)
 	{
 		tmpGroupStyle = `margin:0 ${pOptions.BarGap / 2}px;width:${tmpGroupWidth}px;`;
 	}
@@ -58,15 +79,15 @@ function buildBarGroupHTML(pBin, pIndex, pBarSize, pOptions, pIsSelected, pInRan
 
 	if (tmpVertical)
 	{
-		// Value label above bar
-		if (pOptions.ShowValues)
+		// Value label above bar (skipped in fill mode — values don't fit in narrow columns)
+		if (pOptions.ShowValues && !tmpFillMode)
 		{
 			tmpHTML += `<div class="pict-histogram-value-label" style="width:${tmpGroupWidth}px;">${tmpValue}</div>`;
 		}
 		// Bar
 		tmpHTML += `<div class="pict-histogram-bar${tmpSelectableClass}${tmpSelectedClass}${tmpInRangeClass}" style="${tmpBarStyle}" data-histogram-index="${pIndex}"></div>`;
-		// Bin label below bar
-		if (pOptions.ShowLabels)
+		// Bin label below bar (skipped in fill mode — labels rendered in a separate row)
+		if (pOptions.ShowLabels && !tmpFillMode)
 		{
 			tmpHTML += `<div class="pict-histogram-bin-label" style="width:${tmpGroupWidth}px;">${tmpLabel}</div>`;
 		}
@@ -137,6 +158,64 @@ function buildRangeSliderHTML(pView)
 }
 
 /**
+ * Build the label row for FillContainer vertical mode.
+ *
+ * Labels are rendered in a separate flex row below the axis line, with
+ * automatic interval calculation to avoid overlap when there are many bins.
+ *
+ * @param {object} pView  - The histogram view instance
+ * @param {Array}  pBins  - The bin data array
+ * @returns {string} HTML fragment
+ */
+function buildFillLabelRow(pView, pBins)
+{
+	if (!pBins || pBins.length === 0)
+	{
+		return '';
+	}
+
+	// Determine label interval: explicit setting or auto-compute
+	let tmpLabelInterval = pView.options.LabelInterval || 0;
+	if (tmpLabelInterval <= 0)
+	{
+		// Auto-compute: space labels approximately 80px apart
+		let tmpTargetElementSet = pView.services.ContentAssignment.getElement(pView.options.TargetElementAddress);
+		let tmpContainerWidth = 800;
+		if (tmpTargetElementSet && tmpTargetElementSet.length > 0 && tmpTargetElementSet[0])
+		{
+			tmpContainerWidth = tmpTargetElementSet[0].clientWidth || 800;
+		}
+		if (pBins.length > 0)
+		{
+			let tmpBarWidth = tmpContainerWidth / pBins.length;
+			tmpLabelInterval = Math.max(1, Math.ceil(80 / tmpBarWidth));
+		}
+		else
+		{
+			tmpLabelInterval = 1;
+		}
+	}
+
+	let tmpHTML = '<div class="pict-histogram-label-row">';
+
+	for (let i = 0; i < pBins.length; i++)
+	{
+		let tmpIsLabeled = (i % tmpLabelInterval === 0);
+		if (tmpIsLabeled)
+		{
+			let tmpLabel = pBins[i][pView.options.LabelProperty] || '';
+			// Span covers this label and the unlabeled bars until the next label
+			let tmpSpan = Math.min(tmpLabelInterval, pBins.length - i);
+			tmpHTML += `<div class="pict-histogram-fill-label" style="flex:${tmpSpan};">${tmpLabel}</div>`;
+			i += tmpSpan - 1;
+		}
+	}
+
+	tmpHTML += '</div>';
+	return tmpHTML;
+}
+
+/**
  * Render the full histogram into the target element.
  *
  * @param {object} pView - The histogram view instance
@@ -169,10 +248,11 @@ function render(pView)
 
 	let tmpVertical = (pView.options.Orientation === 'vertical');
 	let tmpOrientationClass = tmpVertical ? 'pict-histogram-vertical' : 'pict-histogram-horizontal';
+	let tmpFillClass = pView.options.FillContainer ? ' pict-histogram-fill' : '';
 
-	// For horizontal mode, measure the longest label so all labels share the same width
+	// For horizontal mode (non-fill), measure the longest label so all labels share the same width
 	let tmpLabelWidth = 0;
-	if (!tmpVertical && pView.options.ShowLabels)
+	if (!tmpVertical && pView.options.ShowLabels && !pView.options.FillContainer)
 	{
 		for (let i = 0; i < tmpBins.length; i++)
 		{
@@ -187,8 +267,8 @@ function render(pView)
 		tmpLabelWidth = Math.max(tmpLabelWidth, 40);
 	}
 
-	let tmpHTML = `<div class="pict-histogram-container ${tmpOrientationClass}">`;
-	tmpHTML += `<div class="pict-histogram-chart ${tmpOrientationClass}">`;
+	let tmpHTML = `<div class="pict-histogram-container ${tmpOrientationClass}${tmpFillClass}">`;
+	tmpHTML += `<div class="pict-histogram-chart ${tmpOrientationClass}${tmpFillClass}">`;
 
 	for (let i = 0; i < tmpBins.length; i++)
 	{
@@ -206,6 +286,13 @@ function render(pView)
 	}
 
 	tmpHTML += '</div>';
+
+	// In FillContainer vertical mode, render axis line and label row separately
+	if (pView.options.FillContainer && tmpVertical && pView.options.ShowLabels)
+	{
+		tmpHTML += '<div class="pict-histogram-axis-line"></div>';
+		tmpHTML += buildFillLabelRow(pView, tmpBins);
+	}
 
 	// Range slider for "range" selection mode
 	if (pView.options.Selectable && pView.options.SelectionMode === 'range')

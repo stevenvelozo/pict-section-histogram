@@ -57,11 +57,23 @@ module.exports = (
 	// Gap between bars in pixels (browser) or characters (cli/consoleui)
 	"BarGap": 4,
 
+	// When true, bar groups expand to fill the container width (vertical) or
+	// height (horizontal) using CSS flex-grow instead of a fixed BarThickness.
+	// Labels and values overflow their column so they remain readable even when
+	// bars are very narrow.  Best suited for time-series or dense histograms.
+	"FillContainer": false,
+
 	// Whether to show value labels on/above bars
 	"ShowValues": true,
 
 	// Whether to show bin labels (x-axis for vertical, y-axis for horizontal)
 	"ShowLabels": true,
+
+	// In FillContainer mode, controls label density in the separate label row.
+	// 0 = auto-compute (space labels approximately 80px apart based on container
+	// width), N > 0 = show a label every N bars starting from index 0.
+	// Ignored when FillContainer is false (every bar shows its own label).
+	"LabelInterval": 0,
 
 	// Color of the bars (CSS color for browser, ANSI color name for cli/consoleui)
 	"BarColor": "#4A90D9",
@@ -277,6 +289,44 @@ module.exports = (
 {
 	box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.3);
 	outline: none;
+}
+.pict-histogram-container.pict-histogram-fill
+{
+	display: block;
+	width: 100%;
+}
+.pict-histogram-fill .pict-histogram-chart
+{
+	width: 100%;
+}
+.pict-histogram-fill .pict-histogram-bar-group
+{
+	flex: 1 1 0%;
+	min-width: 0;
+}
+.pict-histogram-fill .pict-histogram-bar
+{
+	width: 100%;
+}
+.pict-histogram-axis-line
+{
+	width: 100%;
+	height: 1px;
+	background: #ccc;
+}
+.pict-histogram-label-row
+{
+	display: flex;
+	width: 100%;
+}
+.pict-histogram-fill-label
+{
+	font-size: 10px;
+	color: #666;
+	text-align: center;
+	white-space: nowrap;
+	overflow: visible;
+	line-height: 16px;
 }
 `
 });
