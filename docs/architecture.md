@@ -130,10 +130,10 @@ stateDiagram-v2
     [*] --> MultipleMode : SelectionMode = 'multiple'
     [*] --> RangeMode : SelectionMode = 'range'
 
-    SingleMode --> SingleMode : click bar → clear all, select one
-    MultipleMode --> MultipleMode : click bar → toggle selection
-    RangeMode --> RangeMode : click bar → move nearest handle
-    RangeMode --> RangeMode : drag handle → update range bounds
+    SingleMode --> SingleMode : click bar -> clear all, select one
+    MultipleMode --> MultipleMode : click bar -> toggle selection
+    RangeMode --> RangeMode : click bar -> move nearest handle
+    RangeMode --> RangeMode : drag handle -> update range bounds
 
     SingleMode --> Render : triggers renderHistogram()
     MultipleMode --> Render : triggers renderHistogram()
@@ -204,7 +204,7 @@ The browser renderer builds HTML strings and assigns them to the target element 
 
 ### Range Slider
 
-In range mode, a slider track with two draggable handles is rendered below (vertical) or beside (horizontal) the chart. Handles respond to `mousedown` → `mousemove` → `mouseup` events on the document to support drag outside the handle element.
+In range mode, a slider track with two draggable handles is rendered below (vertical) or beside (horizontal) the chart. Handles respond to `mousedown` -> `mousemove` -> `mouseup` events on the document to support drag outside the handle element.
 
 ## ConsoleUI and CLI Renderer Internals
 

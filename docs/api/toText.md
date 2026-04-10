@@ -8,7 +8,7 @@ Get a text representation of the histogram.
 toText()
 ```
 
-**Returns:** `string` — Unicode block art histogram
+**Returns:** `string` -- Unicode block art histogram
 
 ## Description
 

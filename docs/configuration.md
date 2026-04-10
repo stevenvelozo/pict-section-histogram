@@ -158,7 +158,7 @@ These options apply when `RenderMode` is `"consoleui"` or `"cli"`:
 | `BarPartialCharacters` | array | `[" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]` | Fractional block characters for sub-character resolution |
 | `EmptyCharacter` | string | `" "` | Empty space character |
 | `SliderCharacter` | string | `"│"` (U+2502) | Vertical line for range slider track |
-| `SliderHandleCharacter` | string | `"◆"` (U+25C6) | Slider handle marker |
+| `SliderHandleCharacter` | string | `"*"` (U+25C6) | Slider handle marker |
 | `TextWidth` | number | `60` | Total width in characters |
 | `TextHeight` | number | `15` | Total height in characters (vertical mode) |
 

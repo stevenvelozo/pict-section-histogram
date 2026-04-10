@@ -8,7 +8,7 @@ Get the current selection state.
 getSelection()
 ```
 
-**Returns:** `object` — Selection descriptor with mode-specific properties.
+**Returns:** `object` -- Selection descriptor with mode-specific properties.
 
 ## Description
 

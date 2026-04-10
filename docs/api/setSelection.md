@@ -14,7 +14,7 @@ setSelection(pSelection)
 
 ## Description
 
-Updates the internal selection state and writes it to `SelectionDataAddress` if configured. Does **not** fire `onSelectionChange` or re-render automatically — call `renderHistogram()` to update the visual output.
+Updates the internal selection state and writes it to `SelectionDataAddress` if configured. Does **not** fire `onSelectionChange` or re-render automatically -- call `renderHistogram()` to update the visual output.
 
 ## Parameter Format
 

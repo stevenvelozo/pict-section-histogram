@@ -56,8 +56,8 @@ histogramView.handleRangeBarClick(4);
 
 ```javascript
 // Current range: [0, 9]
-histogramView.handleRangeBarClick(3); // Moves start to 3 → [3, 9]
-histogramView.handleRangeBarClick(6); // Moves end to 6 → [3, 6]
+histogramView.handleRangeBarClick(3); // Moves start to 3 -> [3, 9]
+histogramView.handleRangeBarClick(6); // Moves end to 6 -> [3, 6]
 ```
 
 ## Notes

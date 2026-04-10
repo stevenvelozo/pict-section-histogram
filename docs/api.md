@@ -58,7 +58,7 @@ End index of the range selection (inclusive). Only meaningful in `"range"` selec
 
 The active renderer module. Set during construction via `_resolveRenderer()` and switchable at runtime via `setRenderMode()`.
 
-**Type:** `object` — `{ render(pView), wireEvents(pView) }`
+**Type:** `object` -- `{ render(pView), wireEvents(pView) }`
 
 ---
 
@@ -68,7 +68,7 @@ The active renderer module. Set during construction via `_resolveRenderer()` and
 
 Get the current bin data array. Reads from `DataAddress` if configured, falling back to the `Bins` option.
 
-**Returns:** `Array<object>` — Array of bin objects
+**Returns:** `Array<object>` -- Array of bin objects
 
 ```javascript
 let tmpBins = histogramView.getBins();
@@ -124,7 +124,7 @@ Check whether a bin index falls within the current range selection but is not a 
 |-----------|------|-------------|
 | `pIndex` | number | Bin index to check |
 
-**Returns:** `boolean` — `true` if the index is strictly between `_selectionRangeStart` and `_selectionRangeEnd`
+**Returns:** `boolean` -- `true` if the index is strictly between `_selectionRangeStart` and `_selectionRangeEnd`
 
 Only meaningful when `SelectionMode` is `"range"`. Returns `false` for other modes.
 
@@ -266,7 +266,7 @@ See [setRenderMode snippet](api/setRenderMode.md) for detailed examples.
 
 Get the text representation of the histogram using the ConsoleUI renderer, regardless of the current `RenderMode`.
 
-**Returns:** `string` — Unicode block art histogram
+**Returns:** `string` -- Unicode block art histogram
 
 ```javascript
 console.log(histogramView.toText());

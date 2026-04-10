@@ -8,7 +8,7 @@ Retrieve the current bin data array.
 getBins()
 ```
 
-**Returns:** `Array<object>` — Array of bin objects, each containing at minimum a label and value property.
+**Returns:** `Array<object>` -- Array of bin objects, each containing at minimum a label and value property.
 
 ## Description
 
