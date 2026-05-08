@@ -186,7 +186,7 @@ module.exports = (
 .pict-histogram-value-label
 {
 	text-align: center;
-	color: #666;
+	color: var(--theme-color-text-secondary, #666);
 	font-size: 11px;
 	padding: 2px 0;
 	white-space: nowrap;
@@ -198,7 +198,7 @@ module.exports = (
 .pict-histogram-bin-label
 {
 	text-align: center;
-	color: #333;
+	color: var(--theme-color-text-primary, #333);
 	font-size: 11px;
 	padding: 4px 2px 0 2px;
 	white-space: nowrap;
@@ -233,7 +233,7 @@ module.exports = (
 	left: 0;
 	right: 0;
 	height: 4px;
-	background: #E0E0E0;
+	background: var(--theme-color-border-default, #E0E0E0);
 	border-radius: 2px;
 }
 .pict-histogram-horizontal .pict-histogram-range-track
@@ -250,7 +250,7 @@ module.exports = (
 	position: absolute;
 	top: 10px;
 	height: 4px;
-	background: #4A90D9;
+	background: var(--theme-color-brand-primary, #4A90D9);
 	border-radius: 2px;
 }
 .pict-histogram-horizontal .pict-histogram-range-fill
@@ -266,8 +266,8 @@ module.exports = (
 	top: 4px;
 	width: 16px;
 	height: 16px;
-	background: #fff;
-	border: 2px solid #4A90D9;
+	background: var(--theme-color-background-panel, #fff);
+	border: 2px solid var(--theme-color-brand-primary, #4A90D9);
 	border-radius: 50%;
 	cursor: grab;
 	z-index: 2;
@@ -282,7 +282,7 @@ module.exports = (
 .pict-histogram-range-handle:active
 {
 	cursor: grabbing;
-	background: #4A90D9;
+	background: var(--theme-color-brand-primary, #4A90D9);
 }
 .pict-histogram-range-handle:active,
 .pict-histogram-range-handle:focus
@@ -312,7 +312,7 @@ module.exports = (
 {
 	width: 100%;
 	height: 1px;
-	background: #ccc;
+	background: var(--theme-color-border-default, #ccc);
 }
 .pict-histogram-label-row
 {
@@ -322,7 +322,7 @@ module.exports = (
 .pict-histogram-fill-label
 {
 	font-size: 10px;
-	color: #666;
+	color: var(--theme-color-text-secondary, #666);
 	text-align: center;
 	white-space: nowrap;
 	overflow: visible;

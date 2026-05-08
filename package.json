@@ -1,6 +1,6 @@
 {
     "name": "pict-section-histogram",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Pict histogram section with vertical/horizontal orientation, browser/consoleui/CLI rendering, and interactive selection",
     "main": "source/Pict-Section-Histogram.js",
     "scripts": {
