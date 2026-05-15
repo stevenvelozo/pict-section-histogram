@@ -3,6 +3,7 @@
   - [Overview](README.md)
   - [Configuration](configuration.md)
   - [Architecture](architecture.md)
+  - [Code Playground](playground.md)
 
 - Reference
 

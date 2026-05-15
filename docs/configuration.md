@@ -2,6 +2,37 @@
 
 Configuration is passed as the options object when registering a view with `pict.addView()`. All options are merged with sensible defaults from `Pict-Section-Histogram-DefaultConfiguration.js`.
 
+## Try it in the playground
+
+A minimal histogram view, registered against a fresh `pict` and rendered
+into the playground's DOM sandbox. Click ▶ to see four labelled bars in
+the right-hand pane.
+
+```javascript
+const libPict = require('pict');
+const libPictSectionHistogram = require('pict-section-histogram');
+
+const pict = new libPict({ Product: 'HistogramConfigDemo' });
+
+sandbox.innerHTML = '<div id="Histogram-Target" style="height: 200px;"></div>';
+
+pict.addView('ConfigDemoHistogram', {
+    ViewIdentifier:       'ConfigDemoHistogram',
+    Bins:                 [
+        { Label: '2020', Value: 48 },
+        { Label: '2021', Value: 42 },
+        { Label: '2022', Value: 55 },
+        { Label: '2023', Value: 61 }
+    ],
+    TargetElementAddress: '#Histogram-Target',
+    Orientation:          'vertical',
+    MaxBarSize:           160
+}, libPictSectionHistogram);
+
+pict.views.ConfigDemoHistogram.renderHistogram();
+console.log('Bins rendered:', pict.views.ConfigDemoHistogram.getBins().length);
+```
+
 ## Data Configuration
 
 | Option | Type | Default | Description |

@@ -1,0 +1,10 @@
+{
+	"Sandbox": "dom",
+	"Imports":
+	[
+		{ "Name": "fable",                     "Source": "bundled" },
+		{ "Name": "pict",                      "Source": "bundled" },
+		{ "Name": "pict-section-histogram",    "Source": "bundled" },
+		{ "Name": "fable-serviceproviderbase", "Source": "bundled" }
+	]
+}
