@@ -1,7 +1,7 @@
 {
 	"Name": "pict-section-histogram",
-	"Version": "1.0.0",
+	"Version": "1.0.1",
 	"Description": "Pict histogram section with vertical/horizontal orientation, browser/consoleui/CLI rendering, and interactive selection",
-	"GeneratedAt": "2026-04-10T17:25:24.377Z",
-	"GitCommit": "6ac25ec"
+	"GeneratedAt": "2026-05-22T05:45:24.113Z",
+	"GitCommit": "b5c1b2f"
 }

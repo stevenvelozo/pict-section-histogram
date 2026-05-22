@@ -1,119 +1,154 @@
 {
-	"Generated": "2026-04-10T17:25:24.092Z",
+	"Generated": "2026-05-22T05:45:23.957Z",
+	"Mode": "module",
 	"GitHubOrg": "stevenvelozo",
 	"DefaultBranch": "master",
-	"Groups": [
-		{
-			"Name": "Dist",
-			"Key": "dist",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "indoctrinate_content_staging",
-					"Repo": "indoctrinate_content_staging",
-					"Group": "dist",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				}
-			]
-		},
-		{
-			"Name": "Docs",
-			"Key": "docs",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "api",
-					"Repo": "api",
-					"Group": "docs",
-					"Branch": "master",
-					"HasDocs": true,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": [
-						"api/getBins.md",
-						"api/getSelection.md",
-						"api/handleBarClick.md",
-						"api/handleRangeBarClick.md",
-						"api/onSelectionChange.md",
-						"api/renderHistogram.md",
-						"api/setBins.md",
-						"api/setOrientation.md",
-						"api/setRenderMode.md",
-						"api/setSelection.md",
-						"api/toText.md"
-					]
-				},
-				{
-					"Name": "css",
-					"Repo": "css",
-					"Group": "docs",
-					"Branch": "master",
-					"HasDocs": true,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": [
-						"css/docuserve.css"
-					]
-				}
-			]
-		},
-		{
-			"Name": "Example_applications",
-			"Key": "example_applications",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": ".data",
-					"Repo": ".data",
-					"Group": "example_applications",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				},
-				{
-					"Name": "image_histogram",
-					"Repo": "image_histogram",
-					"Group": "example_applications",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				},
-				{
-					"Name": "simple_histogram",
-					"Repo": "simple_histogram",
-					"Group": "example_applications",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				}
-			]
-		},
-		{
-			"Name": "Source",
-			"Key": "source",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "renderers",
-					"Repo": "renderers",
-					"Group": "source",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				}
-			]
-		}
-	]
+	"Module": {
+		"Name": "pict-section-histogram",
+		"Repo": "pict-section-histogram",
+		"Group": "",
+		"Branch": "master",
+		"HasDocs": true,
+		"HasCover": true,
+		"Sidebar": [
+			{
+				"Title": "Getting Started",
+				"Children": [
+					{
+						"Title": "Overview",
+						"Path": "README.md"
+					},
+					{
+						"Title": "Configuration",
+						"Path": "configuration.md"
+					},
+					{
+						"Title": "Architecture",
+						"Path": "architecture.md"
+					},
+					{
+						"Title": "Code Playground",
+						"Path": "playground.md"
+					}
+				]
+			},
+			{
+				"Title": "Reference",
+				"Children": [
+					{
+						"Title": "API Reference",
+						"Path": "api.md"
+					}
+				]
+			},
+			{
+				"Title": "Method Snippets",
+				"Children": [
+					{
+						"Title": "getBins",
+						"Path": "api/getBins.md"
+					},
+					{
+						"Title": "setBins",
+						"Path": "api/setBins.md"
+					},
+					{
+						"Title": "getSelection",
+						"Path": "api/getSelection.md"
+					},
+					{
+						"Title": "setSelection",
+						"Path": "api/setSelection.md"
+					},
+					{
+						"Title": "renderHistogram",
+						"Path": "api/renderHistogram.md"
+					},
+					{
+						"Title": "setOrientation",
+						"Path": "api/setOrientation.md"
+					},
+					{
+						"Title": "setRenderMode",
+						"Path": "api/setRenderMode.md"
+					},
+					{
+						"Title": "onSelectionChange",
+						"Path": "api/onSelectionChange.md"
+					},
+					{
+						"Title": "toText",
+						"Path": "api/toText.md"
+					},
+					{
+						"Title": "handleBarClick",
+						"Path": "api/handleBarClick.md"
+					},
+					{
+						"Title": "handleRangeBarClick",
+						"Path": "api/handleRangeBarClick.md"
+					}
+				]
+			},
+			{
+				"Title": "Retold Ecosystem",
+				"Children": [
+					{
+						"Title": "Pict",
+						"Path": "pict/pict/README.md"
+					},
+					{
+						"Title": "Pict Application",
+						"Path": "pict/pict-application/README.md"
+					},
+					{
+						"Title": "Pict View",
+						"Path": "pict/pict-view/README.md"
+					},
+					{
+						"Title": "Pict Provider",
+						"Path": "pict/pict-provider/README.md"
+					},
+					{
+						"Title": "Fable",
+						"Path": "fable/fable/README.md"
+					},
+					{
+						"Title": "Indoctrinate",
+						"Path": "utility/indoctrinate/README.md"
+					}
+				]
+			}
+		],
+		"DocFiles": [
+			".nojekyll",
+			"README.md",
+			"_brand.json",
+			"_cover.md",
+			"_playground.json",
+			"_sidebar.md",
+			"_topbar.md",
+			"_version.json",
+			"api/getBins.md",
+			"api/getSelection.md",
+			"api/handleBarClick.md",
+			"api/handleRangeBarClick.md",
+			"api/onSelectionChange.md",
+			"api/renderHistogram.md",
+			"api/setBins.md",
+			"api/setOrientation.md",
+			"api/setRenderMode.md",
+			"api/setSelection.md",
+			"api/toText.md",
+			"api.md",
+			"architecture.md",
+			"configuration.md",
+			"index.html",
+			"pict-docuserve.min.js",
+			"playground.md",
+			"retold-catalog.json",
+			"retold-keyword-index.json"
+		]
+	},
+	"Groups": []
 }
