@@ -24,5 +24,15 @@
 		"pict": "^1.0.293",
 		"pict-application": "^1.0.19",
 		"pict-view": "^1.0.63"
+	},
+	"retold":
+	{
+		"ExampleApplication":
+		{
+			"Stage": true,
+			"Title": "Simple Histogram",
+			"Summary": "Eight independent histogram views on one page covering selection modes, data binding, per-bar colors, gap filling, and the runtime API.",
+			"Complexity": "Basic"
+		}
 	}
 }

@@ -16,3 +16,10 @@ Render vertical or horizontal bar charts from an array of label/value bins. Supp
 [API Reference](api.md)
 [Architecture](architecture.md)
 [GitHub](https://github.com/stevenvelozo/pict-section-histogram)
+
+<!-- docuserve:examples:start -->
+| Example | Complexity | Launch |
+|---------|------------|--------|
+| [Image Histogram](examples/image%5Fhistogram/README.md) | Intermediate | [&#9654; Launch](examples/image%5Fhistogram/index.html) |
+| [Simple Histogram](examples/simple%5Fhistogram/README.md) | Basic | [&#9654; Launch](examples/simple%5Fhistogram/index.html) |
+<!-- docuserve:examples:end -->

@@ -24,5 +24,15 @@
 		"pict": "^1.0.293",
 		"pict-application": "^1.0.19",
 		"pict-view": "^1.0.63"
+	},
+	"retold":
+	{
+		"ExampleApplication":
+		{
+			"Stage": true,
+			"Title": "Image Histogram",
+			"Summary": "Drag-and-drop image analyzer that drives six independent histogram views (R/G/B/A, hue, luminosity) with per-bar gradient and rainbow coloring.",
+			"Complexity": "Intermediate"
+		}
 	}
 }

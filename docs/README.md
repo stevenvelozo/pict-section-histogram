@@ -175,5 +175,5 @@ tmpView.renderHistogram();
 - [API Reference](api.md) -- Complete class method and property documentation
 - [Architecture](architecture.md) -- Design patterns, data flow, and mermaid diagrams
 - [Per-Method Snippets](api/getBins.md) -- Detailed code examples for each public method
-- [Pict View](/pict/pict-view/) -- The base view class this module extends
-- [Pict Application](/pict/pict-application/) -- The application container
+- [Pict View](https://stevenvelozo.github.io/pict-view/) -- The base view class this module extends
+- [Pict Application](https://stevenvelozo.github.io/pict-application/) -- The application container

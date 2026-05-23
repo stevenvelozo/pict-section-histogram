@@ -23,11 +23,16 @@
   - [handleBarClick](api/handleBarClick.md)
   - [handleRangeBarClick](api/handleRangeBarClick.md)
 
+- Examples
+
+  - [Simple Histogram](examples/simple_histogram/README.md)
+  - [Image Histogram](examples/image_histogram/README.md)
+
 - Retold Ecosystem
 
-  - [Pict](/pict/pict/)
-  - [Pict Application](/pict/pict-application/)
-  - [Pict View](/pict/pict-view/)
-  - [Pict Provider](/pict/pict-provider/)
-  - [Fable](/fable/fable/)
-  - [Indoctrinate](/utility/indoctrinate/)
+  - [Pict](https://stevenvelozo.github.io/pict/)
+  - [Pict Application](https://stevenvelozo.github.io/pict-application/)
+  - [Pict View](https://stevenvelozo.github.io/pict-view/)
+  - [Pict Provider](https://stevenvelozo.github.io/pict-provider/)
+  - [Fable](https://stevenvelozo.github.io/fable/)
+  - [Indoctrinate](https://stevenvelozo.github.io/indoctrinate/)
