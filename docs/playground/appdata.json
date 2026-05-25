@@ -1,0 +1,18 @@
+{
+	"HistogramBins":
+	[
+		{ "Label": "Jan", "Value":  12 },
+		{ "Label": "Feb", "Value":  28 },
+		{ "Label": "Mar", "Value":  47 },
+		{ "Label": "Apr", "Value":  63 },
+		{ "Label": "May", "Value":  85 },
+		{ "Label": "Jun", "Value":  98 },
+		{ "Label": "Jul", "Value":  74 },
+		{ "Label": "Aug", "Value":  56 },
+		{ "Label": "Sep", "Value":  41 },
+		{ "Label": "Oct", "Value":  33 },
+		{ "Label": "Nov", "Value":  19 },
+		{ "Label": "Dec", "Value":   8 }
+	],
+	"HistogramSelection": {}
+}

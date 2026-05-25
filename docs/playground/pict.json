@@ -1,0 +1,23 @@
+{
+	"Product": "HistogramPlayground",
+	"HistogramViewConfig":
+	{
+		"DataAddress":          "AppData.HistogramBins",
+		"RenderMode":           "browser",
+		"Orientation":          "vertical",
+		"MaxBarSize":           220,
+		"BarThickness":         36,
+		"BarGap":               6,
+		"FillContainer":        false,
+		"ShowValues":           true,
+		"ShowLabels":           true,
+		"BarColor":             "#4A90D9",
+		"SelectedBarColor":     "#2ECC71",
+		"SelectionRangeColor":  "#85C1E9",
+		"Selectable":           true,
+		"SelectionMode":        "range",
+		"SelectionDataAddress": "AppData.HistogramSelection",
+		"LabelProperty":        "Label",
+		"ValueProperty":        "Value"
+	}
+}

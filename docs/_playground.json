@@ -1,10 +1,23 @@
 {
-	"Sandbox": "dom",
+	"Kind":              "section",
+	"WrapperKind":       "view",
+	"SectionType":       "pict-section-histogram",
+	"ApplicationModule": "PictSectionHistogram",
+	"ApplicationGlobal": "PictSectionHistogram",
+	"ViewName":          "Histogram",
+	"ViewConfigKey":     "HistogramViewConfig",
+	"Editors":
+	[
+		{ "Hash": "pictConfig",  "Label": "Pict Config",       "Language": "json",       "DefaultPath": "playground/pict.json" },
+		{ "Hash": "appConfig",   "Label": "App Config",        "Language": "json",       "DefaultPath": "playground/app.json" },
+		{ "Hash": "appData",     "Label": "Initial AppData",   "Language": "json",       "DefaultPath": "playground/appdata.json" },
+		{ "Hash": "application", "Label": "Application Code",  "Language": "javascript", "DefaultPath": "playground/application.js" }
+	],
 	"Imports":
 	[
-		{ "Name": "fable",                     "Source": "bundled" },
-		{ "Name": "pict",                      "Source": "bundled" },
-		{ "Name": "pict-section-histogram",    "Source": "bundled" },
-		{ "Name": "fable-serviceproviderbase", "Source": "bundled" }
+		{ "Name": "pict",                    "Source": "local", "Path": "playground/runtime/pict.min.js" },
+		{ "Name": "pict-application",        "Source": "local", "Path": "playground/runtime/pict-application.min.js" },
+		{ "Name": "pict-section-modal",      "Source": "local", "Path": "playground/runtime/pict-section-modal.min.js" },
+		{ "Name": "pict-section-histogram",  "Source": "local", "Path": "playground/runtime/pict-section-histogram.min.js" }
 	]
 }

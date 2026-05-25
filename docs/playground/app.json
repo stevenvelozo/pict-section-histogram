@@ -1,0 +1,6 @@
+{
+	"Name": "Histogram Playground",
+	"Hash": "HistogramPlayground",
+	"MainViewportViewIdentifier": "Histogram",
+	"AutoRenderMainViewportViewAfterInitialize": true
+}
