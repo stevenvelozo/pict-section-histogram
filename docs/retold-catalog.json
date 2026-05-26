@@ -1,7 +1,7 @@
 {
-	"Generated": "2026-05-23T01:50:31.176Z",
+	"Generated": "2026-05-26T18:23:49.626Z",
 	"Mode": "module",
-	"GitHubOrg": "stevenvelozo",
+	"GitHubOrg": "fable-retold",
 	"DefaultBranch": "master",
 	"Module": {
 		"Name": "pict-section-histogram",
@@ -165,6 +165,14 @@
 			"examples/simple_histogram/simple_histogram.min.js",
 			"index.html",
 			"pict-docuserve.min.js",
+			"playground/app.json",
+			"playground/appdata.json",
+			"playground/application.js",
+			"playground/pict.json",
+			"playground/runtime/pict-application.min.js",
+			"playground/runtime/pict-section-histogram.min.js",
+			"playground/runtime/pict-section-modal.min.js",
+			"playground/runtime/pict.min.js",
 			"playground.md",
 			"retold-catalog.json",
 			"retold-keyword-index.json"
