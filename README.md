@@ -65,7 +65,7 @@ histogramView.onSelectionChange = function(pSelection)
 | `BarColor` | string | `"#4A90D9"` | Default bar color |
 | `SelectedBarColor` | string | `"#2ECC71"` | Selected bar color |
 
-See the [full configuration reference](https://stevenvelozo.github.io/pict-section-histogram/#/configuration) for all options.
+See the [full configuration reference](https://fable-retold.github.io/pict-section-histogram/#/configuration) for all options.
 
 ## Lifecycle Hooks
 
@@ -87,19 +87,19 @@ class MyHistogram extends libPictSectionHistogram
 
 ## Documentation
 
-Full documentation is available at [https://stevenvelozo.github.io/pict-section-histogram/](https://stevenvelozo.github.io/pict-section-histogram/)
+Full documentation is available at [https://fable-retold.github.io/pict-section-histogram/](https://fable-retold.github.io/pict-section-histogram/)
 
-- [Overview & Quick Start](https://stevenvelozo.github.io/pict-section-histogram/#/README) - Getting started
-- [Architecture](https://stevenvelozo.github.io/pict-section-histogram/#/architecture) - Design and diagrams
-- [Configuration](https://stevenvelozo.github.io/pict-section-histogram/#/configuration) - All configuration options
-- [API Reference](https://stevenvelozo.github.io/pict-section-histogram/#/api) - Complete method documentation
+- [Overview & Quick Start](https://fable-retold.github.io/pict-section-histogram/#/README) - Getting started
+- [Architecture](https://fable-retold.github.io/pict-section-histogram/#/architecture) - Design and diagrams
+- [Configuration](https://fable-retold.github.io/pict-section-histogram/#/configuration) - All configuration options
+- [API Reference](https://fable-retold.github.io/pict-section-histogram/#/api) - Complete method documentation
 
 ## Related Packages
 
-- [pict](https://github.com/stevenvelozo/pict) - MVC application framework
-- [pict-view](https://github.com/stevenvelozo/pict-view) - View base class
-- [pict-application](https://github.com/stevenvelozo/pict-application) - Application container
-- [fable](https://github.com/stevenvelozo/fable) - Application services framework
+- [pict](https://github.com/fable-retold/pict) - MVC application framework
+- [pict-view](https://github.com/fable-retold/pict-view) - View base class
+- [pict-application](https://github.com/fable-retold/pict-application) - Application container
+- [fable](https://github.com/fable-retold/fable) - Application services framework
 
 ## License
 
