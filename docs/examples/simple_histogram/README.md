@@ -1,49 +1,49 @@
-# Simple Histogram — A Feature Tour of pict-section-histogram
+# Simple Histogram - A Feature Tour of pict-section-histogram
 
 <!-- docuserve:example-launch:start -->
-> **[&#9654; Launch the live app](examples/simple%5Fhistogram/index.html)** — runs in your browser, opens in a new tab.
+> **[Launch the live app](examples/simple%5Fhistogram/index.html)** - runs in your browser, opens in a new tab.
 <!-- docuserve:example-launch:end -->
 
 The Simple Histogram example mounts **eight independent histogram views** on
 one page, each tuned to demonstrate a different framework capability:
 selection modes, data binding, gap filling, per-bar coloring, large datasets,
 read-only display, and the programmatic API. It is the reference for "what
-can pict-section-histogram do?" — every option in the configuration reference
+can pict-section-histogram do?" - every option in the configuration reference
 is exercised at least once here.
 
 The application is intentionally light on chrome: a single
 `PictApplication` subclass adds eight views, wires per-view
 `onSelectionChange` callbacks for the ones that select, and renders all of
 them once on `onAfterInitializeAsync`. There is no router, no shell, no
-shared state — the whole point is to show each view configuration in
+shared state - the whole point is to show each view configuration in
 isolation so a reader can copy-paste the relevant one into their own app.
 
 ## What it demonstrates
 
 | Capability | Where you see it |
 |------------|------------------|
-| Live data binding via `DataAddress` | Demo 1 — bins read from `AppData.HistogramBins`; demo 6 from `AppData.LargeDataset` |
-| Bins-as-options (no AppData required) | Demos 2, 3, 4, 5, 7, 8 — `Bins` array in the view config |
-| `range` selection with two slider handles | Demo 1 — `SelectionMode: 'range'` with `InitialSelection: { Start: 2, End: 7 }` |
-| `single` selection (click one bar) | Demo 2 — `SelectionMode: 'single'`, horizontal layout |
-| `multiple` selection (toggle each bar) | Demo 3 — `SelectionMode: 'multiple'`, vertical layout |
+| Live data binding via `DataAddress` | Demo 1 - bins read from `AppData.HistogramBins`; demo 6 from `AppData.LargeDataset` |
+| Bins-as-options (no AppData required) | Demos 2, 3, 4, 5, 7, 8 - `Bins` array in the view config |
+| `range` selection with two slider handles | Demo 1 - `SelectionMode: 'range'` with `InitialSelection: { Start: 2, End: 7 }` |
+| `single` selection (click one bar) | Demo 2 - `SelectionMode: 'single'`, horizontal layout |
+| `multiple` selection (toggle each bar) | Demo 3 - `SelectionMode: 'multiple'`, vertical layout |
 | Selection callbacks via `onSelectionChange(pSelection)` | The four selectable demos all wire one |
-| Persisted selection via `SelectionDataAddress` | Demo 1 — `AppData.HistSelection` |
-| Per-bar color overrides via `Bins[i].BarColor` | Demo 5 — heat-map colors; bars are wrapped after render to apply them |
-| Orientation switch at runtime via `setOrientation()` | Demo 1 — Vertical / Horizontal buttons; Demo 8's *Toggle Orientation* |
-| Replacing bin data at runtime via `setBins()` | Demo 4 — gap-fill toggle; Demo 8 — *setBins(newData)* |
-| Setting selection programmatically via `setSelection()` | Demo 8 — *setSelection({Start:1, End:3})* |
-| Reading selection programmatically via `getSelection()` | Demo 8 — *getSelection()* |
-| Read-only (non-interactive) display | Demo 7 — `Selectable: false`, no controls |
-| Compact horizontal layout for many bins | Demo 6 — 20 bins, `BarThickness: 16`, `BarGap: 3` |
+| Persisted selection via `SelectionDataAddress` | Demo 1 - `AppData.HistSelection` |
+| Per-bar color overrides via `Bins[i].BarColor` | Demo 5 - heat-map colors; bars are wrapped after render to apply them |
+| Orientation switch at runtime via `setOrientation()` | Demo 1 - Vertical / Horizontal buttons; Demo 8's *Toggle Orientation* |
+| Replacing bin data at runtime via `setBins()` | Demo 4 - gap-fill toggle; Demo 8 - *setBins(newData)* |
+| Setting selection programmatically via `setSelection()` | Demo 8 - *setSelection({Start:1, End:3})* |
+| Reading selection programmatically via `getSelection()` | Demo 8 - *getSelection()* |
+| Read-only (non-interactive) display | Demo 7 - `Selectable: false`, no controls |
+| Compact horizontal layout for many bins | Demo 6 - 20 bins, `BarThickness: 16`, `BarGap: 3` |
 
 ## Key files
 
-- `Simple-Histogram-Application.js` — eight `addView` calls with eight
+- `Simple-Histogram-Application.js` - eight `addView` calls with eight
   different configurations, plus an `onAfterInitializeAsync` that wires
   callbacks and renders. The `window.histogramApp` object at the bottom is
   the host's UI glue (button onclick handlers).
-- `html/index.html` — the page layout: one `<h2>` + `<p>` + container
+- `html/index.html` - the page layout: one `<h2>` + `<p>` + container
   `<div>` per demo, plus inline `<pre class="code-sample">` blocks that
   preview the configuration. The `<script>` tag at the bottom loads the
   bundled application.
@@ -75,14 +75,14 @@ configuration:
 ```
 
 Demos 1, 4, and 6 read from these addresses; the rest define their bins
-inline in the view config. The two approaches compose freely — picking one
+inline in the view config. The two approaches compose freely - picking one
 or the other is a host-side decision based on whether the data is *external*
 (read from AppData, mutable, possibly written back) or *fixed* (compiled
 into the view).
 
 ---
 
-## Feature 1 — Range selection with two slider handles
+## Feature 1 - Range selection with two slider handles
 
 The headline demo is a vertical histogram with a `range` selection mode.
 The user drags two slider handles to pick a contiguous slice of bins, and
@@ -122,7 +122,7 @@ this.pict.views.RangeHistogram.onSelectionChange = function(pSelection)
     let tmpElement = document.getElementById('selection-output');
     if (tmpElement)
     {
-        tmpElement.textContent = 'Selection: ' + (pSelection.StartLabel || '') + ' – ' + (pSelection.EndLabel || '') +
+        tmpElement.textContent = 'Selection: ' + (pSelection.StartLabel || '') + ' - ' + (pSelection.EndLabel || '') +
             '\nIndices: [' + pSelection.SelectedIndices.join(', ') + ']';
     }
 };
@@ -135,11 +135,11 @@ The same payload is written to `SelectionDataAddress`, so a solver or
 adjacent view can react without needing the callback.
 
 `InitialSelection: { Start: 2, End: 7 }` seeds the handles on first render
-— the example boots with year 2018 → 2023 already highlighted.
+- the example boots with year 2018 -> 2023 already highlighted.
 
-## Feature 2 — Single-select with click-to-pick
+## Feature 2 - Single-select with click-to-pick
 
-Horizontal layout with `SelectionMode: 'single'` — clicking a bar selects
+Horizontal layout with `SelectionMode: 'single'` - clicking a bar selects
 it and deselects the previous one. Bins are provided directly via the
 config, no `DataAddress` needed:
 
@@ -164,13 +164,13 @@ const SingleSelectConfig =
     "BarGap": 6,
     "BarColor": "#E74C3C",
     "SelectedBarColor": "#27AE60",
-    /* … TargetElementAddress / DefaultDestinationAddress / Renderables … */
+    /* ... TargetElementAddress / DefaultDestinationAddress / Renderables ... */
 };
 ```
 
 `BarColor` is the resting color; `SelectedBarColor` is the highlight. For
 `single` mode, `pSelection.SelectedIndices` is always either empty or a
-one-element array — the example maps the indices to bin labels for the
+one-element array - the example maps the indices to bin labels for the
 output:
 
 ```js
@@ -182,10 +182,10 @@ this.pict.views.SingleSelectHistogram.onSelectionChange = function(pSelection)
 };
 ```
 
-## Feature 3 — Multi-select with click-to-toggle
+## Feature 3 - Multi-select with click-to-toggle
 
 `SelectionMode: 'multiple'` is the same UX as single, but clicks *toggle*
-individual bars on and off. There is no range — any subset of bins can be
+individual bars on and off. There is no range - any subset of bins can be
 selected:
 
 ```js
@@ -207,25 +207,25 @@ const MultiSelectConfig =
     "BarGap": 10,
     "BarColor": "#8E44AD",
     "SelectedBarColor": "#F39C12",
-    /* … */
+    /* ... */
 };
 ```
 
 For `multiple` mode, the selection payload is the shape
 `{ Mode: 'multiple', SelectedIndices: [...] }`, sorted ascending. There is
-no `RangeStart` / `RangeEnd` — only `SelectedIndices` matters. The example
+no `RangeStart` / `RangeEnd` - only `SelectedIndices` matters. The example
 joins their labels and renders them into a status line below the chart.
 
-## Feature 4 — Sparse data and runtime bin replacement
+## Feature 4 - Sparse data and runtime bin replacement
 
-Real-world series often have gaps — years with no data, missing periods,
+Real-world series often have gaps - years with no data, missing periods,
 discontinued products. The example seeds a sparse year array
 (`SparseRawData`) and lets the user toggle gap-filling on and off:
 
 ```js
 showSparseData: function(pFillGaps)
 {
-    let tmpPict = window._Pict || /* … resolve global pict … */;
+    let tmpPict = window._Pict || /* ... resolve global pict ... */;
     let tmpSparseRaw = tmpPict.AppData.SparseRawData;
     let tmpData;
     if (pFillGaps)
@@ -255,13 +255,13 @@ showSparseData: function(pFillGaps)
 }
 ```
 
-`setBins(newArray)` is the runtime API for swapping bin data — it
+`setBins(newArray)` is the runtime API for swapping bin data - it
 replaces the view's `Bins` option (and writes through to `DataAddress` if
 one is configured) but does **not** re-render on its own. The host pairs
 it with `renderHistogram()` to make the change visible. This explicit
 two-step keeps batched updates cheap (set, set, set, *then* render).
 
-The view itself is configured as non-selectable — sparse-data viewers are
+The view itself is configured as non-selectable - sparse-data viewers are
 typically read-only:
 
 ```js
@@ -275,11 +275,11 @@ const SparseConfig =
     "BarThickness":   28,
     "BarGap":         3,
     "BarColor":       "#16A085",
-    /* … */
+    /* ... */
 };
 ```
 
-## Feature 5 — Per-bar colors as a heat map
+## Feature 5 - Per-bar colors as a heat map
 
 Histogram bins accept a per-bin `BarColor` override. The framework's
 renderer reads `BarColor` from the default view config; per-bin overrides
@@ -296,11 +296,11 @@ const HeatMapConfig =
         { "Label": "Feb", "Value": 42, "BarColor": "#F39C12" },
         { "Label": "Mar", "Value": 68, "BarColor": "#27AE60" },
         { "Label": "Apr", "Value": 91, "BarColor": "#2980B9" },
-        /* … one per month … */
+        /* ... one per month ... */
     ],
     "Orientation": "vertical",
     "Selectable":  false,
-    /* … */
+    /* ... */
 };
 
 // In onAfterInitializeAsync:
@@ -324,7 +324,7 @@ tmpHeatView.renderHistogram = function()
 };
 ```
 
-The wrapping is the canonical pattern for per-bar visual overrides — it
+The wrapping is the canonical pattern for per-bar visual overrides - it
 runs after the framework's `renderHistogram()` is done, finds every bar by
 its `data-histogram-index` attribute, and applies the matching bin's
 `BarColor`. Because it composes with the framework's render rather than
@@ -334,7 +334,7 @@ correctly (each re-render re-applies the per-bar colors).
 The `image_histogram` example uses the same `wrapRendererWithBarColors`
 pattern, but factored out as a helper because it does this for six views.
 
-## Feature 6 — Compact horizontal layout for many bins
+## Feature 6 - Compact horizontal layout for many bins
 
 A horizontal histogram with 20 bins and thin bars demonstrates how the
 geometry options scale to dense data:
@@ -352,24 +352,24 @@ const LargeDatasetConfig =
     "BarColor": "#3498DB",
     "ShowValues": true,
     "ShowLabels": true,
-    /* … */
+    /* ... */
 };
 ```
 
-`MaxBarSize` is the horizontal axis budget — bars are scaled so the
+`MaxBarSize` is the horizontal axis budget - bars are scaled so the
 longest bin reaches this length. `BarThickness: 16` keeps each row short;
 `BarGap: 3` keeps them visually distinct without wasting space. The
-`AppData.LargeDataset` array has 20 entries — service categories with
-counts — so the resulting chart fits in a modest vertical strip.
+`AppData.LargeDataset` array has 20 entries - service categories with
+counts - so the resulting chart fits in a modest vertical strip.
 
 `ShowValues: true` puts the numeric value next to each bar; `ShowLabels:
 true` puts the bin label on the leading axis. Both default to `true`, but
 the example sets them explicitly to call attention to the option.
 
-## Feature 7 — Read-only (no selection)
+## Feature 7 - Read-only (no selection)
 
 `Selectable: false` (the default) is what you want for any non-interactive
-display — dashboards, reports, summary cards. Bars don't react to hover
+display - dashboards, reports, summary cards. Bars don't react to hover
 or click; no slider handles are drawn:
 
 ```js
@@ -394,14 +394,14 @@ const ReadOnlyConfig =
     "BarColor": "#34495E",
     "ShowValues": true,
     "ShowLabels": true,
-    /* … */
+    /* ... */
 };
 ```
 
-This is the leanest possible configuration — bins plus a few geometry
+This is the leanest possible configuration - bins plus a few geometry
 hints. Everything else accepts defaults.
 
-## Feature 8 — Programmatic API
+## Feature 8 - Programmatic API
 
 The last demo wires four buttons to the histogram's runtime API. Each
 button calls one method and writes the result to a status line so the
@@ -469,8 +469,8 @@ method accepts an array of indices instead.
 The example resets the range handles to span the full new dataset after
 each `setBins()` by reaching into the private `_selectionRangeStart` /
 `_selectionRangeEnd` fields and calling `_syncSelectionFromRange()`. That
-is *not* required for normal use — the framework re-clamps the range to
-valid bounds automatically — but it makes the demo behavior cleaner when
+is *not* required for normal use - the framework re-clamps the range to
+valid bounds automatically - but it makes the demo behavior cleaner when
 the bin count changes.
 
 ## Running the example
@@ -483,23 +483,23 @@ npm run build
 ```
 
 Each demo is a self-contained section on the same page. There is no
-routing — just scroll.
+routing - just scroll.
 
 ## Things to try
 
-- **Drag the range handles** in Demo 1 — the slider snaps to bin
+- **Drag the range handles** in Demo 1 - the slider snaps to bin
   boundaries; the status line below updates with the start / end labels
   and the inclusive index list.
-- **Click bars in Demo 2** — the previously selected bar deselects.
-- **Toggle bars in Demo 3** — any subset, in any order.
-- **Toggle gap filling** in Demo 4 — switch between sparse years and a
+- **Click bars in Demo 2** - the previously selected bar deselects.
+- **Toggle bars in Demo 3** - any subset, in any order.
+- **Toggle gap filling** in Demo 4 - switch between sparse years and a
   zero-filled continuous range. The chart redraws via `setBins` +
   `renderHistogram`.
-- **Watch the heat map in Demo 5** — each bar carries its own color from
+- **Watch the heat map in Demo 5** - each bar carries its own color from
   the bin data, not the view config.
-- **Resize the page horizontally** — the horizontal histograms (Demos 2
+- **Resize the page horizontally** - the horizontal histograms (Demos 2
   and 6) reflow; vertical ones keep their width.
-- **Use the API buttons in Demo 8** — every method call writes its
+- **Use the API buttons in Demo 8** - every method call writes its
   return value into the status line so the payload shape is visible.
 
 ## Takeaways
@@ -508,12 +508,12 @@ routing — just scroll.
    `DataAddress` for data that lives in `AppData` and may change; pick
    `Bins` for static lists. The same view supports either.
 2. **Per-bar overrides ride on the bin objects.** `BarColor` on a bin
-   record participates in styling — the renderer reads it during a thin
+   record participates in styling - the renderer reads it during a thin
    post-render wrap and applies it via inline style. The same shape
    supports per-bin tooltips, classnames, or labels in a host extension.
 3. **Selection state is observable everywhere.** Wire
    `onSelectionChange(pSelection)`, point `SelectionDataAddress` at an
-   `AppData` slot, or call `getSelection()` on demand — all three
+   `AppData` slot, or call `getSelection()` on demand - all three
    surfaces deliver the same payload.
 4. **Runtime mutations are explicit.** `setBins()` and `setSelection()`
    change state but do not re-render; the host pairs them with
@@ -521,17 +521,17 @@ routing — just scroll.
    any other Pict view.
 5. **The view is a building block, not a chart library.** Selection
    modes, orientation, geometry, and colors compose freely with a Pict
-   application — no DOM owns the layout, no chart engine owns the
+   application - no DOM owns the layout, no chart engine owns the
    theming.
 
 ## Related documentation
 
-- [Overview](../../README.md) — module landing page with the quick-start
-- [Configuration](../../configuration.md) — every option in the example
+- [Overview](../../README.md) - module landing page with the quick-start
+- [Configuration](../../configuration.md) - every option in the example
   is documented here
-- [API Reference](../../api.md) — class methods and properties
-- [Architecture](../../architecture.md) — data flow and render modes
-- [setBins snippet](../../api/setBins.md) — focused walk-through of bin replacement
-- [setSelection snippet](../../api/setSelection.md) — selection update patterns
-- [getSelection snippet](../../api/getSelection.md) — payload shape per mode
-- [onSelectionChange snippet](../../api/onSelectionChange.md) — callback wiring
+- [API Reference](../../api.md) - class methods and properties
+- [Architecture](../../architecture.md) - data flow and render modes
+- [setBins snippet](../../api/setBins.md) - focused walk-through of bin replacement
+- [setSelection snippet](../../api/setSelection.md) - selection update patterns
+- [getSelection snippet](../../api/getSelection.md) - payload shape per mode
+- [onSelectionChange snippet](../../api/onSelectionChange.md) - callback wiring

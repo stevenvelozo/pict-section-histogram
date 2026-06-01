@@ -5,7 +5,7 @@ Configuration is passed as the options object when registering a view with `pict
 ## Try it in the playground
 
 A minimal histogram view, registered against a fresh `pict` and rendered
-into the playground's DOM sandbox. Click ▶ to see four labelled bars in
+into the playground's DOM sandbox. Click play to see four labelled bars in
 the right-hand pane.
 
 ```javascript

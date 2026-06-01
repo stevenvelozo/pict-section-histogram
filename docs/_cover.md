@@ -20,6 +20,6 @@ Render vertical or horizontal bar charts from an array of label/value bins. Supp
 <!-- docuserve:examples:start -->
 | Example | Complexity | Launch |
 |---------|------------|--------|
-| [Image Histogram](examples/image%5Fhistogram/README.md) | Intermediate | [&#9654; Launch](examples/image%5Fhistogram/index.html) |
-| [Simple Histogram](examples/simple%5Fhistogram/README.md) | Basic | [&#9654; Launch](examples/simple%5Fhistogram/index.html) |
+| [Image Histogram](examples/image%5Fhistogram/README.md) | Intermediate | [Launch](examples/image%5Fhistogram/index.html) |
+| [Simple Histogram](examples/simple%5Fhistogram/README.md) | Basic | [Launch](examples/simple%5Fhistogram/index.html) |
 <!-- docuserve:examples:end -->
