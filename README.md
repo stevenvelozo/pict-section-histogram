@@ -1,6 +1,6 @@
 # pict-section-histogram
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[MIT License](LICENSE)
 
 A histogram visualization section for the Pict MVC framework. Renders interactive vertical or horizontal bar charts in three modes: browser (HTML/CSS), terminal UI (blessed-compatible text art), and CLI (ANSI-colored stdout). Supports single-click, multi-toggle, and draggable range selection.
 
