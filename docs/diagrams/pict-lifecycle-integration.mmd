@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant App as Pict Application
+    participant View as PictSectionHistogram
+    participant Renderer as Active Renderer
+
+    App->>View: constructor(pFable, pOptions, pServiceHash)
+    View->>View: _resolveRenderer()
+    View->>View: _applyInitialSelection()
+
+    App->>View: render() [via Pict lifecycle]
+    View->>View: onAfterRender()
+    View->>View: pict.CSSMap.injectCSS()
+    View->>View: onAfterInitialRender()
+    View->>View: renderHistogram()
+    View->>Renderer: render(this)
+    View->>Renderer: wireEvents(this)
+
+    Note over View: User interacts with histogram
+
+    Renderer->>View: handleBarClick(index)
+    View->>View: update _selectedIndices
+    View->>View: _writeSelectionToAddress()
+    View->>View: onSelectionChange(selection)
+    View->>View: renderHistogram()
+    View->>Renderer: render(this)
+    View->>Renderer: wireEvents(this)

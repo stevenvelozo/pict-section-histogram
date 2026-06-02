@@ -70,22 +70,8 @@ classDiagram
 
 The histogram uses a strategy pattern for rendering. The main class holds a reference to the active renderer and delegates `render()` and `wireEvents()` calls to it. Renderers are swappable at runtime via `setRenderMode()`.
 
-```mermaid
-graph LR
-    subgraph PictSectionHistogram
-        A[_renderer]
-    end
-
-    subgraph Renderers
-        B[Browser<br/>HTML/CSS + DOM events]
-        C[ConsoleUI<br/>Unicode block art]
-        D[CLI<br/>ANSI escape codes]
-    end
-
-    A -->|"RenderMode = 'browser'"| B
-    A -->|"RenderMode = 'consoleui'"| C
-    A -->|"RenderMode = 'cli'"| D
-```
+<!-- bespoke diagram: edit diagrams/renderer-strategy-pattern.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-histogram/docs -->
+![Renderer Strategy Pattern](diagrams/renderer-strategy-pattern.svg)
 
 Each renderer exports the same interface:
 
@@ -96,19 +82,8 @@ Each renderer exports the same interface:
 
 ## Data Flow
 
-```mermaid
-flowchart TD
-    A[AppData / Bins option] -->|getBins| B[Bin Array]
-    B --> C{Renderer}
-    C -->|browser| D[HTML/CSS in DOM]
-    C -->|consoleui| E[Text via ContentAssignment]
-    C -->|cli| F[ANSI text to stdout]
-
-    D -->|click / drag events| G[Selection State]
-    G -->|_writeSelectionToAddress| H[SelectionDataAddress in AppData]
-    G -->|onSelectionChange| I[Consumer Callback]
-    G -->|renderHistogram| C
-```
+<!-- bespoke diagram: edit diagrams/data-flow.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-histogram/docs -->
+![Data Flow](diagrams/data-flow.svg)
 
 ### Data In
 
@@ -154,34 +129,8 @@ In range mode, `_selectedIndices` is kept in sync via `_syncSelectionFromRange()
 
 ## Pict Lifecycle Integration
 
-```mermaid
-sequenceDiagram
-    participant App as Pict Application
-    participant View as PictSectionHistogram
-    participant Renderer as Active Renderer
-
-    App->>View: constructor(pFable, pOptions, pServiceHash)
-    View->>View: _resolveRenderer()
-    View->>View: _applyInitialSelection()
-
-    App->>View: render() [via Pict lifecycle]
-    View->>View: onAfterRender()
-    View->>View: pict.CSSMap.injectCSS()
-    View->>View: onAfterInitialRender()
-    View->>View: renderHistogram()
-    View->>Renderer: render(this)
-    View->>Renderer: wireEvents(this)
-
-    Note over View: User interacts with histogram
-
-    Renderer->>View: handleBarClick(index)
-    View->>View: update _selectedIndices
-    View->>View: _writeSelectionToAddress()
-    View->>View: onSelectionChange(selection)
-    View->>View: renderHistogram()
-    View->>Renderer: render(this)
-    View->>Renderer: wireEvents(this)
-```
+<!-- bespoke diagram: edit diagrams/pict-lifecycle-integration.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-histogram/docs -->
+![Pict Lifecycle Integration](diagrams/pict-lifecycle-integration.svg)
 
 ### Standalone Usage (Without Full Lifecycle)
 

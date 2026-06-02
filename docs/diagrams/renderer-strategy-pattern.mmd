@@ -1,0 +1,14 @@
+graph LR
+    subgraph PictSectionHistogram
+        A[_renderer]
+    end
+
+    subgraph Renderers
+        B[Browser<br/>HTML/CSS + DOM events]
+        C[ConsoleUI<br/>Unicode block art]
+        D[CLI<br/>ANSI escape codes]
+    end
+
+    A -->|"RenderMode = 'browser'"| B
+    A -->|"RenderMode = 'consoleui'"| C
+    A -->|"RenderMode = 'cli'"| D

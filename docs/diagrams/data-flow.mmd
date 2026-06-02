@@ -1,0 +1,11 @@
+flowchart TD
+    A[AppData / Bins option] -->|getBins| B[Bin Array]
+    B --> C{Renderer}
+    C -->|browser| D[HTML/CSS in DOM]
+    C -->|consoleui| E[Text via ContentAssignment]
+    C -->|cli| F[ANSI text to stdout]
+
+    D -->|click / drag events| G[Selection State]
+    G -->|_writeSelectionToAddress| H[SelectionDataAddress in AppData]
+    G -->|onSelectionChange| I[Consumer Callback]
+    G -->|renderHistogram| C
