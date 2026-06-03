@@ -6,21 +6,8 @@
 
 ## Module Structure
 
-```
-pict-section-histogram/
-├── source/
-│   ├── Pict-Section-Histogram.js                  # Main view class
-│   ├── Pict-Section-Histogram-DefaultConfiguration.js  # Default options + CSS
-│   └── renderers/
-│       ├── Pict-Histogram-Renderer-Browser.js      # HTML/CSS + DOM events
-│       ├── Pict-Histogram-Renderer-ConsoleUI.js    # Unicode text art
-│       └── Pict-Histogram-Renderer-CLI.js          # ANSI-colored stdout
-├── test/
-│   └── Pict-Section-Histogram_tests.js
-├── example/
-│   └── index.html
-└── dist/                                           # Built browser bundles
-```
+<!-- bespoke diagram: edit diagrams/module-structure.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-histogram/docs -->
+![Module Structure](diagrams/module-structure.svg)
 
 ## Class Hierarchy
 
